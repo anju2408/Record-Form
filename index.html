@@ -892,14 +892,14 @@
                                     <div id="dvPrintComment" class="containerPrintComment"></div>
                                 </div>
                             </div>
-                            <p><img id="output" width="200px"></img>
+                            <p id="uploadedfiles">
                             </p>
                             <div class="responsive-message"></div>
                         </div>
                         <div class="files">
                             <div class="galleryselector" id="uploading">
                                 <img src="https://img.icons8.com/external-prettycons-lineal-prettycons/90/000000/external-gallery-multimedia-prettycons-lineal-prettycons.png" />
-                                <p><input type="file" id="file" accept="image/*" onchange="loadFile(event)" style="display:none;"></input>
+                                <p><input type="file" id="file" accept="image/*" onchange="loadFile(event)" style="display:none;" multiple></input>
                                 </p>
                                 <p><label for="file">upload a File<label></p>
                                 </div>
@@ -979,7 +979,6 @@
                                     </div>
                                 </button>
                             </div>
-
                             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                 aria-hidden="true">
