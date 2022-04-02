@@ -1228,11 +1228,16 @@ stopStreaming();
 function loadFile(event) {
     var img = document.createElement("img");
     img.src = "https://img.icons8.com/fluency-systems-regular/48/000000/edit--v1.png";
+<<<<<<< HEAD
     img.setAttribute('id', 'filesetting');
+=======
+    img.setAttribute('id','filesetting');
+>>>>>>> 5c9d2e8eeda9b202d7cd8b53c1bbbc7e18e02d48
     var src = document.getElementById("filehead");
     src.appendChild(img);
     document.getElementById('filesetting').remove();
     document.getElementById("uploading").style.display = "block";
+<<<<<<< HEAD
     var f = document.getElementById('file');
     if (f.files.length > 0) {
         for (var j = 0; j <= f.files.length - 1; j++) {
@@ -1252,6 +1257,30 @@ function loadFile(event) {
     var CurrentBadge = null;
     var picture = $("#image_0");
     LoadSavedComments(picture);
+=======
+    //document.getElementById("output").style.display = "block";
+    // var image = document.getElementById("output");
+    // image.src = URL.createObjectURL(event.target.files[0]);
+    // console.log(image);
+    // var img2 = document.getElementById('output2');
+    // img2.src = URL.createObjectURL(event.target.files[1]);
+    // console.log(img2);
+    var f = document.getElementById('file');
+    if(f.files.length > 0){
+        for (var j = 0; j <= f.files.length - 1; j++) {
+            var id = "upload_"+j;
+            var image = document.createElement("img");
+            image.setAttribute('width','200px');
+            image.setAttribute('id',id);
+            image.src = URL.createObjectURL(event.target.files[j]);
+            document.getElementById('uploadedfiles').appendChild(image);
+            console.log("uploaded image are",image);
+        }
+    }
+    else { 
+        alert('Please select all files at a time.') 
+    }
+>>>>>>> 5c9d2e8eeda9b202d7cd8b53c1bbbc7e18e02d48
 }
 
 //<*********************************Advice div *************************************************************************************************************>
