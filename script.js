@@ -1153,6 +1153,7 @@ function cancleprescription() {
 
 //<********************************Files Section****************************************************************************************************************************************************************************************************>
 
+var images = [];
 // The buttons to start & stop stream and to capture the image
 var btnStart = document.getElementById("btn-start");
 var btnCapture = document.getElementById("btn-capture");
@@ -1224,7 +1225,8 @@ function captureSnapshot() {
         var img = new Image();
 
         ctx.drawImage(stream, 0, 0, capture.width, capture.height);
-
+        images.push(capture.toDataURL("image/png"));//pushig image url in array images
+        console.log(images);
         img.src = capture.toDataURL("image/png");
         img.width = 240;
 
@@ -1233,8 +1235,6 @@ function captureSnapshot() {
         snapshot_1.appendChild(img);
 
     }
-
-
 }
 btnClose.addEventListener("click", stopStreaming);
 btnClose_1.addEventListener("click", stopStreaming);
@@ -1255,6 +1255,7 @@ function stopStreaming() {
     }
 }
 stopStreaming();
+
 
 
 //function for file upload input on change
@@ -1280,14 +1281,19 @@ function loadFile(event) {
             var image = document.createElement("img");
             image.setAttribute('width','200px');
             image.setAttribute('id',id);
-            image.src = URL.createObjectURL(event.target.files[j]);
+            var source = URL.createObjectURL(event.target.files[j]);
+            image.src = source;
+            images.push(source);
+            console.log(images)
             document.getElementById('uploadedfiles').appendChild(image);
+            //snapshot_1.appendChild(image);
             console.log("uploaded image are",image);
         }
     }
     else { 
         alert('Please select all files at a time.') 
     }
+    //LoadImages();
 }
 
 //<*********************************Advice div *************************************************************************************************************>
@@ -1752,8 +1758,7 @@ function ShowTag() {
 
 const tags = [];
 
-const images = ["", "", ""];
-
+images = ["https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80","https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",""];
 function LoadImages() {
     images.map((image, index) => {
         const element =
@@ -1765,4 +1770,5 @@ function LoadImages() {
         $("#scrollView").append(element);
 
     });
+    //console.log(element);
 }

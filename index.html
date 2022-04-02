@@ -30,23 +30,31 @@
 </head>
 <script>
     $(document).ready(function() {
-        LoadImages();
+       // LoadImages();
 
         $('#snapshot-1').on('click', function() {
-            $('.image').attr('src', $(this).find('img').attr('src'));
+        //     var lenghtofimages = $('.image').length;
+        //     console.log("logging in ",$('.image')[0]);
+        //     console.log('logging in',$('.image')[1]);
+        //     console.log($('.image')[2]);
+        //    // console.log($('.image')[3]);
+        //    $('.image')[0].src =  $(this).find('img').attr('src');
+        //    $('.image')[1].src = $('#uploadedfiles').find('#upload_1').attr('src');
+        //   $('.image')[2].src = $('#uploadedfiles').find('img').attr('src');
             $('#example').show();
         });
 
-        $('#output').on('click', function() {
-            $('.image').attr('src', $(this).find('img').attr('src'));
-            $('#example-1').show();
-        });
+        // $('#output').on('click', function() {
+        //     $('.image').attr('src', $(this).find('img').attr('src'));
+        //     $('#example-1').show();
+        // });
 
         var CurrentBadge = null;
         var picture = $("#image_0");
         LoadSavedComments(picture);
 
         $(document).on("click", ".image", function(e) {
+
             picture = $("#" + e.target.id);
             const x = e.offsetX;
             const y = e.offsetY;
@@ -67,6 +75,7 @@
             });
         });
 
+    
         $("#editDeleteModal").kendoDialog({
             title: "Update/Delete Comment",
             closable: true,
@@ -123,7 +132,6 @@
 
         $("button[name='zoomOut']").click(function(e) {
             ZoomOut(picture[0]);
-
         });
 
         let deg = 0;
@@ -995,7 +1003,7 @@
                                                 <video id="stream" style="width: 466px; height: 246px;"></video>
                                             </div>
                                             <div class="play-area-sub" id="play-area-sub">
-                                                <canvas id="capture" width="320" height="240"></canvas>
+                                                <canvas id="ca..ppppp``pture" width="320" height="240"></canvas>
 
                                             </div>
                                             <div id="snapshot"></div>
@@ -1047,7 +1055,6 @@
                             <button type="button" class="btn btn-warning" id="btn-capture">Save
                                                 Photo</button>
                             <button type="button" class="btn btn-secondary" id="retake">Retake</button>
-
                         </div>
                     </div>
                 </div>
