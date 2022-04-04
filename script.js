@@ -1120,6 +1120,7 @@ function cancleprescription() {
 
 //<********************************Files Section****************************************************************************************************************************************************************************************************>
 
+var images = [];
 // The buttons to start & stop stream and to capture the image
 var btnStart = document.getElementById("btn-start");
 var btnCapture = document.getElementById("btn-capture");
@@ -1228,16 +1229,11 @@ stopStreaming();
 function loadFile(event) {
     var img = document.createElement("img");
     img.src = "https://img.icons8.com/fluency-systems-regular/48/000000/edit--v1.png";
-<<<<<<< HEAD
-    img.setAttribute('id', 'filesetting');
-=======
     img.setAttribute('id','filesetting');
->>>>>>> 5c9d2e8eeda9b202d7cd8b53c1bbbc7e18e02d48
     var src = document.getElementById("filehead");
     src.appendChild(img);
     document.getElementById('filesetting').remove();
     document.getElementById("uploading").style.display = "block";
-<<<<<<< HEAD
     var f = document.getElementById('file');
     if (f.files.length > 0) {
         for (var j = 0; j <= f.files.length - 1; j++) {
@@ -1257,7 +1253,6 @@ function loadFile(event) {
     var CurrentBadge = null;
     var picture = $("#image_0");
     LoadSavedComments(picture);
-=======
     //document.getElementById("output").style.display = "block";
     // var image = document.getElementById("output");
     // image.src = URL.createObjectURL(event.target.files[0]);
@@ -1272,15 +1267,18 @@ function loadFile(event) {
             var image = document.createElement("img");
             image.setAttribute('width','200px');
             image.setAttribute('id',id);
-            image.src = URL.createObjectURL(event.target.files[j]);
+            var source = URL.createObjectURL(event.target.files[j]);
+            image.src = source;
+            images.push(source);
+            console.log(images)
             document.getElementById('uploadedfiles').appendChild(image);
+            //snapshot_1.appendChild(image);
             console.log("uploaded image are",image);
         }
     }
     else { 
         alert('Please select all files at a time.') 
     }
->>>>>>> 5c9d2e8eeda9b202d7cd8b53c1bbbc7e18e02d48
 }
 
 //<*********************************Advice div *************************************************************************************************************>
@@ -1724,6 +1722,7 @@ function ShowTag() {
 
 const tags = [];
 
+images = ["https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80","https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",""];
 const images = [];
 
 function LoadImages() {
@@ -1745,6 +1744,7 @@ function LoadImages() {
         $("#scrollView").append(element);
 
     });
+    //console.log(element);
 
     function onScrollChange(e) {
         picture = $("#image_" + e.nextPage);
