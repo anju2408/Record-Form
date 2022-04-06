@@ -25,6 +25,7 @@
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
 
 </head>
+<<<<<<< HEAD
 <script>
     $(document).ready(function() {
 
@@ -219,6 +220,8 @@
     });
 </script>
 
+=======
+>>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 <body>
     <div class="containerBox">
         <div class="center">
@@ -780,8 +783,7 @@
                     </div>
 
                     <div class="file">
-                        <p id="uploadedfiles">
-                        </p>
+                        
                         <div id="window">
                             <nav class="navbar navbar-expand-lg navbar-light">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -843,9 +845,9 @@
                                 <div id="dvPrintComment" class="containerPrintComment"></div>
                             </div>
                         </div>
+                        <span id="uploadedfiles"></span>
                         <span id="snapshot-1"></span>
                         <div class="responsive-message"></div>
-
                         <div class="files">
                             <div class="galleryselector" id="uploading">
                                 <img src="https://img.icons8.com/external-prettycons-lineal-prettycons/90/000000/external-gallery-multimedia-prettycons-lineal-prettycons.png" />
@@ -1236,7 +1238,8 @@
     <div class="boxRecord">
         <div class="innerboxs" id="procedurehead">
             <p>Complete Procedures:</p>
-            <img id="imghead" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+            <img id="imghead"
+                src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
         </div>
         <table id="tabletocomplete">
             <tr>
@@ -1246,21 +1249,19 @@
                 <th>Total()</th>
             </tr>
             <tr>
-                <td>
+                <td><!--col0-->
                     <div class="bodypack">
                         <p>Body Pack</p>
                         <button class="bodypack buttoncolor2">Invoiced</button>
                     </div>
                 </td>
-                <td>
-                    30.00
+                <td><!--col1-->
+                    <p>30.00</p>
                 </td>
-                <td>
-                    3.00(10%)
+                <td style="display: flex; margin-left: 5rem;"><!--col2-->
+                    <p>3.00</p><p>(10%)</p>
                 </td>
-                <td>
-                    27.00
-                </td>
+                <td>27.00</td>
             </tr>
             <tr>
                 <td>
@@ -1270,31 +1271,27 @@
                     </div>
                 </td>
                 <td>
-                    50.00
+                    <p>50.00</p>
                 </td>
-                <td>
-                    20.00(20%)
+                <td style="display:flex; margin-left: 5rem;">
+                    <p>20.00</p><p>(20%)</p>
                 </td>
-                <td>
-                    30.00
-                </td>
+                <td>30.00</td>
             </tr>
             <tr>
-                <td>
+                <td><!--col 1-->
                     <div class="bodypack">
                         <p>Fruit facial</p>
                         <button class="bodypack buttoncolor2">Invoiced</button>
                     </div>
                 </td>
-                <td>
-                    70.00
+                <td><!--col 2-->
+                    <p>70.00</p>
                 </td>
-                <td>
-                    35.00(50%)
+                <td style="display: flex;margin-left: 5rem;"><!--col3-->
+                    <p>35.00</p><p>(50%)</p>
                 </td>
-                <td>
-                    35.00
-                </td>
+                <td>35.00</td>
             </tr>
             <tr>
                 <td>
@@ -1304,14 +1301,12 @@
                     </div>
                 </td>
                 <td>
-                    50.00
+                    <p>50.00</p>
                 </td>
-                <td>
-                    2.50(5%)
+                <td style="display: flex;margin-left: 5rem;">
+                    <p>2.50</p><p>(5%)</p>
                 </td>
-                <td>
-                    47.00
-                </td>
+                <td>47.00</td>
             </tr>
             <tr>
                 <td>
@@ -1321,67 +1316,61 @@
                     </div>
                 </td>
                 <td>
-                    50.00
+                    <p>50.00</p>
                 </td>
-                <td>
-                    2.50(5%)
+                <td style="display: flex;margin-left: 5rem;">
+                    <p>2.50</p><p>(5%)</p>
                 </td>
-                <td>
-                    47.00
-                </td>
+                <td>47.00</td>
             </tr>
             <tr>
-                <td>
+                <td><!--col 1-->
                     <div class="bodypack">
                         <p>Fruit facial</p>
                         <button class="bodypack buttoncolor2">Invoiced</button>
                     </div>
                 </td>
-                <td>
-                    70.00
+                <td><!--col 2-->
+                    <p>70.00</p>
                 </td>
-                <td>
-                    2.50(5%)
-                </td>
-                <td>
-                    66.50
-                </td>
+                <td style="display: flex;margin-left: 5rem;"><!-- col 3-->
+                    <p>2.50</p><p>(5%)</p>
+                </td><!-- col 4-->
+                <td>66.50</td>
             </tr>
             <tr>
-                <td>
+                <td><!--col 0 -->
                     <div class="bodypack">
-                        <div>
+                        <div id="div10">
                             <p>Root touch up</p>
-                            <p id="addnotelevel10" onclick="">Add note</p>
+                            <p id="addnotelevel10">Add note</p>
                         </div>
                     </div>
                 </td>
-                <td>
+                <td><!--col 1 -->
                     <div class="unitcost">
                         <input type="text" value="2">
                         <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
                         <input type="text" value="500">
                     </div>
                 </td>
-                <td>
+                <td style="display: flex;margin-left: 5rem;"><!--col 2 -->
                     <div class="discount">
                         <input type="text" value="10">
                         <select name="" id="">
-                                        <option value="%">%</option>
-                                        <option value="Rs">Rs</option>
-                                    </select>
+                            <option value="%">%</option>
+                            <option value="Rs">Rs</option>
+                        </select>
                     </div>
                 </td>
-                <td>
-                    <div class="tatala">
-                        <p>900.00</p>
-                        <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
-                    </div>
+                <td>900.00</td>
+                <td id="cancleout1"><!--col 4 -->
+                    <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="rootthakra">
+                    <div class="rootthakra" id="div11">
                         <h6>Thakradhara</h6>
                         <p id="addnotelevel11">Add note</p>
                     </div>
@@ -1393,20 +1382,18 @@
                         <input type="text" value="500">
                     </div>
                 </td>
-                <td>
+                <td style="display: flex;margin-left: 5rem;">
                     <div class="discount">
                         <input type="text" value="10">
                         <select name="" id="">
-                                        <option value="%">%</option>
-                                        <option value="Rs">Rs</option>
-                                    </select>
+                            <option value="%">%</option>
+                            <option value="Rs">Rs</option>
+                        </select>
                     </div>
                 </td>
-                <td>
-                    <div class="tatala">
-                        <p>1550.00</p>
-                        <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
-                    </div>
+                <td>1550.00</td>
+                <td id="cancleout1"><!--col 4 -->
+                    <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
                 </td>
             </tr>
             <tr class="totalval">
@@ -1431,14 +1418,18 @@
                 </td>
             </tr>
         </table>
-        <div class="innnercdbutton">
+        <div class="innnercdbutton">                
             <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
             <button class="savebtn" onclick="doneprocedure()" name="savebtn" value="OK" type="button">Done</button>
         </div>
     </div>
+<<<<<<< HEAD
     </div>
     </div>
     </div>
+=======
+</div>
+>>>>>>> 73291a4df3f959809560e0077539dc4c72197623
     <script type="text/javascript" src="script.js"></script>
 </body>
 
