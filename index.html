@@ -23,17 +23,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+
 </head>
-    
 <script>
     $(document).ready(function() {
 
-        var CurrentBadge = null;
-        var picture = $("#image_0");
-        // LoadSavedComments(picture);
-
         $(document).on("click", ".image", function(e) {
             picture = $("#" + e.target.id);
+            console.log(picture);
             const x = e.offsetX;
             const y = e.offsetY;
             let data = "";
@@ -47,9 +44,12 @@
                     };
                     const points = picture.data("points");
                     points.push(_new);
+                    console.log(points);
                     picture.attr("data-points", JSON.stringify(points));
+                    console.log(picture.attr("data-points", JSON.stringify(points)));
                     LoadSavedComments(picture);
-                }
+                    console.log("LoadSavedComment");
+                };
             });
         });
 
@@ -103,13 +103,11 @@
         }
 
         $("button[name='zoomIn']").click(function(e) {
-            console.log(picture);
             ZoomIn(picture[0]);
 
         });
 
         $("button[name='zoomOut']").click(function(e) {
-            console.log(picture);
             ZoomOut(picture[0]);
 
         });
@@ -133,44 +131,33 @@
             console.log("Share");
         });
 
-        // $("button[name='delete']").click(function() {
-        //     // let points = $(picture).data("points");
-        //     const imageId = $(picture)[0].id;
-        //     var iPosition = images.indexOf($("#" + imageId).attr('src'));
+        $("button[name='delete']").click(function() {
+            let points = $(picture).data("points");
+            const imageId = $(picture)[0].id;
+            var iPosition = images.indexOf($("#" + imageId).attr('src'));
 
-        //     // $(picture).remove();
-        //     // for (let i = 0; i < points.length; i++) {
+            $(picture).remove();
+            for (let i = 0; i < points.length; i++) {
 
-        //     //     $("#comment-badge-" + imageId + "-" + i).remove();
-        //     // }
-        //     images.splice(iPosition, 1);
-        //     console.log(images);
-        //     console.log($("#imgContainer_" + iPosition));
-        //     $("#imgContainer_" + iPosition).remove();
-        // LoadImages();
-        // $(".file-name").remove();
-        // $(".k-link").remove();
-        // $(".image-container").remove();
-        // $(".k-icon").remove();
-        // setInterval(function(e) {
-        //     $("#window").data("kendoWindow").refresh()
-        // }, 1000);
-        // window.parent.$("#window").data("kendoWindow").refresh();
-        // $("#dvTags").remove();
-        // $("#commentTags").remove();
-        // $("#btnAddTags").remove();
-        // $(".file-name").remove();
-        // });
-
-        function onScrollChange(e) {
-            picture = $("#image_" + e.nextPage);
-            LoadSavedComments(picture);
-        }
-
-        $("#scrollView").kendoScrollView({
-            enablePager: true,
-            contentHeight: "100%",
-            change: onScrollChange,
+                $("#comment-badge-" + imageId + "-" + i).remove();
+            }
+            // images.splice(iPosition, 1);
+            console.log(images);
+            console.log($("#imgContainer_" + iPosition));
+            $("#imgContainer_" + iPosition).remove();
+            // LoadImages();
+            // $(".file-name").remove();
+            // $(".k-link").remove();
+            // $(".image-container").remove();
+            // $(".k-icon").remove();
+            // setInterval(function(e) {
+            //     $("#window").data("kendoWindow").refresh()
+            // }, 1000);
+            // window.parent.$("#window").data("kendoWindow").refresh();
+            // $("#dvTags").remove();
+            // $("#commentTags").remove();
+            // $("#btnAddTags").remove();
+            // $(".file-name").remove();
         });
 
         tags.map((tag) => {
@@ -205,6 +192,7 @@
         function onClose() {
             snapshotImgPopup.fadeIn();
         }
+
         uploadFilePopup = $("#uploadedfiles");
 
         uploadFilePopup.click(function(e) {
@@ -228,8 +216,6 @@
             ],
             close: onClose
         }).data("kendoWindow").center();
-
-
     });
 </script>
 
@@ -856,12 +842,6 @@
                                 <div id="editDeleteModal"></div>
                                 <div id="dvPrintComment" class="containerPrintComment"></div>
                             </div>
-<<<<<<< HEAD
-=======
-                            <p id="uploadedfiles">
-                            </p>
-                            <div class="responsive-message"></div>
->>>>>>> 5c9d2e8eeda9b202d7cd8b53c1bbbc7e18e02d48
                         </div>
                         <span id="snapshot-1"></span>
                         <div class="responsive-message"></div>
@@ -1457,6 +1437,9 @@
         </div>
     </div>
     </div>
+    </div>
+    </div>
     <script type="text/javascript" src="script.js"></script>
+</body>
 
 </html>

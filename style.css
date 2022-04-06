@@ -1153,6 +1153,11 @@
                 display: block !important;
             }
             
+            #snapshot-1 img,
+            #uploadedfiles img {
+                margin: 10px;
+            }
+            
             @media screen and (max-width: 1023px) {
                 div.k-window {
                     display: none !important;

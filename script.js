@@ -1070,24 +1070,20 @@ function setprescription() {
     document.getElementById('prescriptionsetting').remove();
     var table = document.getElementById('prescriptiontable');
     var l = table.rows.length;
-
+    //console.log(l);
     for (var i = 1; i < l; i++) {
         var l1 = document.getElementById('prescriptiontable').rows[i].cells.length;
-
         for (var j = 0; j < l1 - 1; j++) {
-
             var x = document.getElementById("prescriptiontable").rows[i].cells[j];
             console.log(x)
             var len = x.getElementsByTagName('input').length;
             var len2 = x.getElementsByTagName('select').length;
-
             if (len == 1 && len2 == 0) {
                 var val = x.getElementsByTagName('input')[0].value;
                 var p = document.createElement('p');
                 p.innerText = val;
                 x.getElementsByTagName('p')[0].appendChild(p);
                 x.getElementsByTagName('input')[0].remove();
-
             }
             if (len == 2 && len2 == 0) {
                 var val = x.getElementsByTagName('input')[0].value;
@@ -1127,8 +1123,10 @@ var btnCapture = document.getElementById("btn-capture");
 // The stream & capture
 var stream = document.getElementById("stream");
 var stream_1 = document.getElementById("stream-1");
+
 //holds the content of videostream div
 var capture = document.getElementById("capture");
+
 //hold the content of capture
 var snapshot = document.getElementById("snapshot");
 var snapshot_1 = document.getElementById("snapshot-1");
@@ -1191,18 +1189,21 @@ function captureSnapshot() {
 
         ctx.drawImage(stream, 0, 0, capture.width, capture.height);
         images.push(capture.toDataURL("image/png"));
-        LoadImages();
-        var CurrentBadge = null;
-        var picture = $("#image_0");
-        LoadSavedComments(picture);
-
+        // LoadImages();
         img.src = capture.toDataURL("image/png");
         img.width = 240;
 
         // snapshot_1.innerHTML = '';
 
         snapshot_1.appendChild(img);
-
+    }
+    var gallery = document.getElementById("uploadedfiles");
+    console.log(gallery);
+    if (gallery == null || gallery == "") {
+        alert("Upload files now");
+        console.log("Upload files now");
+    } else {
+        LoadImages();
     }
 }
 btnClose.addEventListener("click", stopStreaming);
@@ -1226,18 +1227,13 @@ stopStreaming();
 //function for file upload input on change
 
 function loadFile(event) {
-    var img = document.createElement("img");
+    var img = document.createElement("img"); // adding edit icon
     img.src = "https://img.icons8.com/fluency-systems-regular/48/000000/edit--v1.png";
-<<<<<<< HEAD
     img.setAttribute('id', 'filesetting');
-=======
-    img.setAttribute('id','filesetting');
->>>>>>> 5c9d2e8eeda9b202d7cd8b53c1bbbc7e18e02d48
     var src = document.getElementById("filehead");
     src.appendChild(img);
     document.getElementById('filesetting').remove();
     document.getElementById("uploading").style.display = "block";
-<<<<<<< HEAD
     var f = document.getElementById('file');
     if (f.files.length > 0) {
         for (var j = 0; j <= f.files.length - 1; j++) {
@@ -1253,34 +1249,13 @@ function loadFile(event) {
     } else {
         alert('Please select all files at a time.')
     }
-    LoadImages();
-    var CurrentBadge = null;
-    var picture = $("#image_0");
-    LoadSavedComments(picture);
-=======
-    //document.getElementById("output").style.display = "block";
-    // var image = document.getElementById("output");
-    // image.src = URL.createObjectURL(event.target.files[0]);
-    // console.log(image);
-    // var img2 = document.getElementById('output2');
-    // img2.src = URL.createObjectURL(event.target.files[1]);
-    // console.log(img2);
-    var f = document.getElementById('file');
-    if(f.files.length > 0){
-        for (var j = 0; j <= f.files.length - 1; j++) {
-            var id = "upload_"+j;
-            var image = document.createElement("img");
-            image.setAttribute('width','200px');
-            image.setAttribute('id',id);
-            image.src = URL.createObjectURL(event.target.files[j]);
-            document.getElementById('uploadedfiles').appendChild(image);
-            console.log("uploaded image are",image);
-        }
+    if (snapshot_1.childNodes.length === 0) {
+        alert("Capture photo compulsary");
+        console.log("Capture photo compulsary");
+    } else {
+        LoadImages();
     }
-    else { 
-        alert('Please select all files at a time.') 
-    }
->>>>>>> 5c9d2e8eeda9b202d7cd8b53c1bbbc7e18e02d48
+    // LoadImages();
 }
 
 //<*********************************Advice div *************************************************************************************************************>
@@ -1353,7 +1328,6 @@ $('#testadvice').click(function(event) {
 //setting tag in input to add instruction for right side
 function setlabtest(event) {
     var tagname = event.target.innerText;
-    console.log(tagname);
     document.getElementById('searchlabtest').value = tagname;
 }
 //setting tag in input box of left side
@@ -1365,6 +1339,7 @@ function setlabtest2(event) {
 
 //deleting tag cross function
 function deletetest(event) {
+    //console.log('delete');
     var idi = (event.target.id);
     document.getElementById(idi).remove();
 }
@@ -1389,7 +1364,9 @@ function addins() {
     var inptest = document.getElementById('searchlabtest').value;
     var ins = document.getElementById('addtestinstruction').value;
     document.getElementById('addtestinstruction').value = "";
+
     var id = inptest + "1";
+
     var p = document.createElement('p');
     p.setAttribute('class', 'testinstructionp');
     p.innerText = ins;
@@ -1407,6 +1384,7 @@ function addins2() {
     var inptest = document.getElementById('testinp1').value;
     var ins = document.getElementById('testinp2').value;
     document.getElementById('testinp2').value = "";
+
     var id = inptest + 2;
     var p = document.createElement('p');
     p.setAttribute('class', 'testinstructionp');
@@ -1427,6 +1405,7 @@ function donelabtest() {
     var img1 = document.createElement('img');
     img1.src = "https://img.icons8.com/fluency-systems-regular/48/000000/edit--v1.png";
     document.getElementById('testheading').appendChild(img1);
+
     var x = document.getElementById('rightdiv');
     var y = document.getElementById('leftdiv');
     document.getElementById('lefttestinp').innerHTML = '';
@@ -1537,7 +1516,9 @@ function total() {
         var val2 = col1.getElementsByTagName('input')[1].value;
         var ans = eval(val1 * val2);
         var col2 = row.getElementsByTagName('td')[2];
+        //var inp2 = col2.getElementsByTagName('input')[0];
         var val3 = col2.getElementsByTagName('input')[0].value;
+        //editing here 23/3/2022
         var sign = col2.getElementsByTagName('select')[0].value;
         if (sign == "%") {
             var total = (eval((ans - (ans * (val3 / 100)))));
@@ -1615,8 +1596,9 @@ function doneprocedure() {
 
 function editinvoice() {}
 
-//<*********************************Image Popup******************************************************>//
+//<*****************************************************Image Popup******************************************************>//
 function LoadSavedComments(picture) {
+    console.log("Load");
     $(".k-animation-container").remove();
     picture.parent().children().not(".image").remove();
     picture.parent().off();
@@ -1626,8 +1608,11 @@ function LoadSavedComments(picture) {
         points = [];
         picture.attr("data-points", JSON.stringify(points));
     }
+    console.log(points);
+    console.log(picture.attr("data-points"));
 
     const imageId = picture[0].id;
+    console.log(imageId);
 
     for (i = 0; i < points.length; i++) {
         const point = points[i];
@@ -1654,12 +1639,14 @@ function LoadSavedComments(picture) {
                 (i + 1) +
                 "</span>"
             );
+        console.log("Append");
 
         $("#comment-badge-" + imageId + "-" + i).kendoBadge({
             themeColor: "warning",
             shape: "pill",
             size: "large",
         });
+        console.log("Badge");
 
         $("#comment-badge-" + imageId + "-" + i).kendoTooltip({
             content: txt,
@@ -1672,6 +1659,7 @@ function LoadSavedComments(picture) {
                 },
             },
         });
+        console.log("Tooltip");
 
         $("#dvPrintComment").html("<table></table>");
         points.map((point, index) => {
@@ -1691,7 +1679,7 @@ function onShow() {
 }
 
 function ZoomIn(picture) {
-    const currWidth = picture.width;
+    const currWidth = picture.clientWidth;
     if (currWidth == 700) return false;
     else {
         picture.style.width = (currWidth + 100) + "px";
@@ -1700,7 +1688,7 @@ function ZoomIn(picture) {
 }
 
 function ZoomOut(picture) {
-    const currWidth = picture.width;
+    const currWidth = picture.clientWidth;
     if (currWidth == 100) return false;
     else {
         picture.style.width = (currWidth - 100) + "px";
@@ -1726,6 +1714,9 @@ const tags = [];
 
 const images = [];
 
+var CurrentBadge = null;
+var picture = $("#image_0");
+
 function LoadImages() {
     images.map((image, index) => {
         const element =
@@ -1735,24 +1726,22 @@ function LoadImages() {
             index +
             '" src="' +
             image +
-            '" data-points="[]" class="image" /></div></div><div class="row rowFileName" id="rowFileName"><div class="col"><span class="file-name"><i class="fa fa-file-image-o" aria-hidden="true"></i>image.name."' + index + '".jpg</span></div></div></div>';
-        // if (typeof(element) != 'undefined' && element != null) {
-        //     alert('Element exists!');
-        //     console.log(element);
-        // } else {
-        //     alert('Element does not exist!');
-        // }
+            '" data-points="[]" class="image" /></div></div><div class="row"><div class="col"><span class="file-name"><i class="fa fa-file-image-o" aria-hidden="true"></i>image.name."' + index + '".jpg</span></div></div></div>';
         $("#scrollView").append(element);
 
     });
 
     function onScrollChange(e) {
         picture = $("#image_" + e.nextPage);
+        console.log(picture);
         LoadSavedComments(picture);
+        console.log("OnScrollChange");
     }
+
     $("#scrollView").kendoScrollView({
         enablePager: true,
         contentHeight: "100%",
         change: onScrollChange,
     });
+    console.log("ScrollView");
 }
