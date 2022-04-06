@@ -1087,7 +1087,6 @@ function doseChange3(selectObj) {
 //<############################################Done button to set prescription################################################################################################################################>
 
 function setprescription() {
-<<<<<<< HEAD
     var img = document.createElement("img"); // adding edit icon
     img.src = "https://img.icons8.com/fluency-systems-regular/48/000000/edit--v1.png";
     var src = document.getElementById("prescription");
@@ -1129,7 +1128,7 @@ function setprescription() {
                 x.getElementsByTagName('p')[1].innerText = val2;
             }
         }
-=======
+      
   var img = document.createElement("img"); // adding edit icon
   img.src =
     "https://img.icons8.com/fluency-systems-regular/48/000000/edit--v1.png";
@@ -1172,7 +1171,6 @@ function setprescription() {
         x.getElementsByTagName("p")[0].innerText = val;
         x.getElementsByTagName("p")[1].innerText = val2;
       }
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
     }
   }
 }
@@ -1372,13 +1370,12 @@ function LoadSavedComments(picture) {
       },
     });
 
-<<<<<<< HEAD
         ctx.drawImage(stream, 0, 0, capture.width, capture.height);
         images.push(capture.toDataURL("image/png"));
         // LoadImages();
         img.src = capture.toDataURL("image/png");
         img.width = 240;
-=======
+    
     $("#dvPrintComment").html("<table></table>");
     points.map((point, index) => {
       $("#dvPrintComment").append(
@@ -1395,13 +1392,11 @@ function LoadSavedComments(picture) {
 function onShow() {
   $("#editDeleteModal").show();
 }
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 
 function ZoomIn(picture) {
   console.log("picture", picture);
   const currWidth = picture.width;
 
-<<<<<<< HEAD
         snapshot_1.appendChild(img);
     }
     var gallery = document.getElementById("uploadedfiles");
@@ -1412,7 +1407,6 @@ function ZoomIn(picture) {
     } else {
         LoadImages();
     }
-=======
   if (currWidth == 700) return false;
   else {
     picture.style.width = currWidth + 100 + "px";
@@ -1425,7 +1419,6 @@ function ZoomOut(picture) {
   else {
     picture.style.width = currWidth - 100 + "px";
   }
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 }
 
 function openFullscreen() {
@@ -1574,7 +1567,6 @@ function loadFile(event) {
         LoadImages();
     }
     // LoadImages();
-=======
   if (updatedComment !== null && updatedComment.trim() !== "") {
     points[index].data = updatedComment;
     picture.attr("data-points", JSON.stringify(points));
@@ -1676,7 +1668,6 @@ uploadFilePopup.click(function (e) {
 
 function onClose() {
   uploadFilePopup.fadeIn();
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 }
 
 myWindow
@@ -1766,14 +1757,11 @@ $("#testadvice").click(function (event) {
 
 //setting tag in input to add instruction for right side
 function setlabtest(event) {
-<<<<<<< HEAD
     var tagname = event.target.innerText;
     document.getElementById('searchlabtest').value = tagname;
-=======
   var tagname = event.target.innerText;
   console.log(tagname);
   document.getElementById("searchlabtest").value = tagname;
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 }
 //setting tag in input box of left side
 function setlabtest2(event) {
@@ -1783,14 +1771,11 @@ function setlabtest2(event) {
 //
 //deleting tag cross function
 function deletetest(event) {
-<<<<<<< HEAD
     //console.log('delete');
     var idi = (event.target.id);
     document.getElementById(idi).remove();
-=======
   var idi = event.target.id;
   document.getElementById(idi).remove();
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 }
 
 //adding functioning to add instruction
@@ -1810,7 +1795,6 @@ document.getElementById("addtestins").addEventListener("click", function () {
 
 //functionality after pressing add button in left div.
 function addins() {
-<<<<<<< HEAD
     var inptest = document.getElementById('searchlabtest').value;
     var ins = document.getElementById('addtestinstruction').value;
     document.getElementById('addtestinstruction').value = "";
@@ -1827,7 +1811,6 @@ function addins() {
     element.removeChild(element.children[1]);
 
     //get by id element at add p tag in that div h6 and id name same
-=======
   var inptest = document.getElementById("searchlabtest").value;
   var ins = document.getElementById("addtestinstruction").value;
   document.getElementById("addtestinstruction").value = "";
@@ -1842,12 +1825,10 @@ function addins() {
   element.removeChild(element.children[1]);
 
   //get by id element at add p tag in that div h6 and id name same
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 }
 
 //functionality after pressing add button in right
 function addins2() {
-<<<<<<< HEAD
     var inptest = document.getElementById('testinp1').value;
     var ins = document.getElementById('testinp2').value;
     document.getElementById('testinp2').value = "";
@@ -1861,7 +1842,7 @@ function addins2() {
     element.classList.remove('bgcolorStamp');
     element.classList.remove("bgcolorStampl");
     element.removeChild(element.children[1]);
-=======
+  
   var inptest = document.getElementById("testinp1").value;
   var ins = document.getElementById("testinp2").value;
   document.getElementById("testinp2").value = "";
@@ -1874,12 +1855,10 @@ function addins2() {
   element.classList.remove("bgcolorStamp");
   element.classList.remove("bgcolorStampl");
   element.removeChild(element.children[1]);
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 }
 
 //function for done button
 function donelabtest() {
-<<<<<<< HEAD
     document.getElementById('testheading').innerHTML = "";
     var p3 = document.createElement('p');
     p3.innerText = "Lab Test";
@@ -1900,7 +1879,7 @@ function donelabtest() {
     p2.innerHTML = "Tests For Next Visit:";
     p2.setAttribute('class', 'titleleft')
     document.getElementById('righttestinp').appendChild(p2);
-=======
+
   document.getElementById("testheading").innerHTML = "";
   var p3 = document.createElement("p");
   p3.innerText = "Lab Test";
@@ -1921,7 +1900,6 @@ function donelabtest() {
   p2.innerHTML = "Tests For Next Visit:";
   p2.setAttribute("class", "titleleft");
   document.getElementById("righttestinp").appendChild(p2);
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 }
 
 //<************************Reveiw tab functionality**************************************************************************************************************************>
@@ -2007,7 +1985,6 @@ function setnotes3() {
 }
 //##########################treatment plan costs##############################################################################################################################################>
 function total() {
-<<<<<<< HEAD
     var t = document.getElementById('treatmenttable');
     var len = t.getElementsByTagName('tr').length;
     for (let i = 1; i < len - 1; i++) {
@@ -2028,7 +2005,7 @@ function total() {
         }
         var col4 = row.getElementsByTagName('td')[3];
         col4.getElementsByTagName('p')[0].innerText = total;
-=======
+
   var t = document.getElementById("treatmenttable");
   var len = t.getElementsByTagName("tr").length;
   for (let i = 1; i < len - 1; i++) {
@@ -2044,7 +2021,6 @@ function total() {
       var total = eval(ans - ans * (val3 / 100));
     } else {
       var total = eval(ans - val3);
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
     }
     var col4 = row.getElementsByTagName("td")[3];
     col4.getElementsByTagName("p")[0].innerText = total;
@@ -2159,7 +2135,6 @@ function doneprocedure(){
     img2.setAttribute('onclick','editinvoice()');
     document.getElementById('imghead').remove();
     document.getElementById('procedurehead').appendChild(img2);
-<<<<<<< HEAD
 }
 
 function editinvoice() {}
@@ -2251,7 +2226,6 @@ function ZoomIn(picture) {
     if (currWidth == 700) return false;
     else {
         picture.style.width = (currWidth + 100) + "px";
-=======
 
 }
 //<####################edit in voice############################################################################################################>
@@ -2265,12 +2239,10 @@ function editinvoice(){
         colj1.innerHTML="<div class='unitcost'><input type='text' value='2'><img src='https://img.icons8.com/material-outlined/24/000000/delete-sign.png' /><input type='text' value='500'></div>";
         var colj2 = rowj.getElementsByTagName('td')[2];
         colj2.innerHTML ="<div class='discount'><input type='text' value='10'><select name='' id=''><option value='%'>%</option><option value='Rs'>Rs</option></select></div>";
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
     }
 
 }
 
-<<<<<<< HEAD
 function ZoomOut(picture) {
     const currWidth = picture.clientWidth;
     if (currWidth == 100) return false;
@@ -2278,9 +2250,8 @@ function ZoomOut(picture) {
         picture.style.width = (currWidth - 100) + "px";
     }
 }
-=======
+  
 //####################add note button functionality ##############################################################################################>
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
 
 document.getElementById('addnotelevel10').addEventListener('click',function(event){
     document.getElementById('addnotelevel10').style.display='none';
@@ -2318,7 +2289,6 @@ function setnotes11(){
 }
 //#####################delete button functionality#######################################################################################################>
 
-<<<<<<< HEAD
 const tags = [];
 
 const images = [];
@@ -2354,10 +2324,9 @@ function LoadImages() {
     });
     console.log("ScrollView");
 }
-=======
+
 $("#tabletocomplete").on("click", "#cancleout1", function (event) {
     $(this).closest("tr").remove();   
 });
 
 //#######################end###############################################################################################################################>
->>>>>>> 73291a4df3f959809560e0077539dc4c72197623
