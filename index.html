@@ -24,214 +24,6 @@
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
 </head>
-<script>
-    $(document).ready(function() {
-        var CurrentBadge = null;
-        var picture = $("#image_0");
-        // LoadSavedComments(picture);
-
-        $(document).on("click", ".image", function(e) {
-
-            picture = $("#" + e.target.id);
-            const x = e.offsetX;
-            const y = e.offsetY;
-            let data = "";
-
-            kendo.prompt("Add a comment", "").then(function(data) {
-                if (data !== null && data.trim() !== "") {
-                    const _new = {
-                        left: x,
-                        top: y,
-                        data: data,
-                    };
-                    const points = picture.data("points");
-                    points.push(_new);
-                    picture.attr("data-points", JSON.stringify(points));
-                    LoadSavedComments(picture);
-                }
-            });
-        });
-
-    
-        $("#editDeleteModal").kendoDialog({
-            title: "Update/Delete Comment",
-            closable: true,
-            modal: true,
-            content: '<input id="txtUpdateComment" />',
-            actions: [{
-                text: "CANCEL",
-            }, {
-                text: "UPDATE",
-                action: onUpdate,
-            }, {
-                text: "DELETE",
-                primary: true,
-                action: onDelete,
-            }, ],
-            show: onShow,
-        });
-
-        $("#txtUpdateComment").kendoTextBox({
-            placeholder: "Comment",
-        });
-
-        $(document).on("dblclick", ".comment-badge", function(e) {
-            CurrentBadge = $(this);
-            const getComment = e.target.attributes[3].value;
-            $("#txtUpdateComment").val(getComment);
-            $("#editDeleteModal").data("kendoDialog").open();
-        });
-
-        function onDelete() {
-            const index = parseInt(CurrentBadge.data("index"));
-            const points = picture.data("points");
-            points.splice(index, 1);
-            picture.attr("data-points", JSON.stringify(points));
-            LoadSavedComments(picture);
-        }
-
-        function onUpdate() {
-            const index = parseInt(CurrentBadge.data("index"));
-            const points = $(picture).data("points");
-            const updatedComment = $("#txtUpdateComment").val();
-
-            if (updatedComment !== null && updatedComment.trim() !== "") {
-                points[index].data = updatedComment;
-                $(picture).attr("data-points", JSON.stringify(points));
-                LoadSavedComments(picture);
-            }
-        }
-
-        $("button[name='zoomIn']").click(function(e) {
-            console.log(picture);
-            ZoomIn(picture[0]);
-
-        });
-
-        $("button[name='zoomOut']").click(function(e) {
-            console.log(picture);
-            ZoomOut(picture[0]);
-        });
-
-        let deg = 0;
-        $("button[name='rotate']").on("click", function(e) {
-            const direction = e.currentTarget.getAttribute("direction");
-            deg = direction === "left" ? deg - 90 : deg + 90;
-            $(picture).css({
-                "-webkit-transform": "rotate(" + deg + "deg)",
-                "-moz-transform": "rotate(" + deg + "deg)",
-                transform: "rotate(" + deg + "deg)",
-            });
-        });
-
-        $("button[name='download']").click(function() {
-            window.print();
-        });
-
-        $("button[name='share']").click(function() {
-            console.log("Share");
-        });
-
-        // $("button[name='delete']").click(function() {
-        //     // let points = $(picture).data("points");
-        //     const imageId = $(picture)[0].id;
-        //     var iPosition = images.indexOf($("#" + imageId).attr('src'));
-
-        //     // $(picture).remove();
-        //     // for (let i = 0; i < points.length; i++) {
-
-        //     //     $("#comment-badge-" + imageId + "-" + i).remove();
-        //     // }
-        //     images.splice(iPosition, 1);
-        //     console.log(images);
-        //     console.log($("#imgContainer_" + iPosition));
-        //     $("#imgContainer_" + iPosition).remove();
-        // LoadImages();
-        // $(".file-name").remove();
-        // $(".k-link").remove();
-        // $(".image-container").remove();
-        // $(".k-icon").remove();
-        // setInterval(function(e) {
-        //     $("#window").data("kendoWindow").refresh()
-        // }, 1000);
-        // window.parent.$("#window").data("kendoWindow").refresh();
-        // $("#dvTags").remove();
-        // $("#commentTags").remove();
-        // $("#btnAddTags").remove();
-        // $(".file-name").remove();
-        // });
-
-        function onScrollChange(e) {
-            picture = $("#image_" + e.nextPage);
-            LoadSavedComments(picture);
-        }
-
-        $("#scrollView").kendoScrollView({
-            enablePager: true,
-            contentHeight: "100%",
-            change: onScrollChange,
-        });
-
-        tags.map((tag) => {
-            $("#dvTags").append("<strong class='tag'>#" + tag + "</strong>");
-        });
-
-        $("#btnAddTags").click(function() {
-            ShowTag();
-        });
-
-        $("#commentTags").on("keypress", function(e) {
-            if (e.keyCode == 13) {
-                const getTag = $("#commentTags").val().trim();
-                tags.push(getTag);
-                $("#dvTags").append(
-                    "<strong class='badge bg-primary tag'>#" + getTag + "</strong>"
-                );
-                $("#commentTags").val("");
-                return false;
-            }
-        });
-
-        var myWindow = $("#window");
-
-        snapshotImgPopup = $("#snapshot-1");
-
-        snapshotImgPopup.click(function() {
-            myWindow.data("kendoWindow").open();
-            snapshotImgPopup.fadeOut();
-        });
-
-        function onClose() {
-            snapshotImgPopup.fadeIn();
-        }
-        uploadFilePopup = $("#uploadedfiles");
-
-        uploadFilePopup.click(function(e) {
-            myWindow.data("kendoWindow").open();
-            uploadFilePopup.fadeOut();
-        });
-
-        function onClose() {
-            uploadFilePopup.fadeIn();
-        }
-
-        myWindow.kendoWindow({
-            width: "600px",
-            title: "Capture Image",
-            visible: false,
-            actions: [
-                "Pin",
-                "Minimize",
-                "Maximize",
-                "Close"
-            ],
-            close: onClose
-        }).data("kendoWindow").center();
-
-
-    });
-</script>
-
 <body>
     <div class="containerBox">
         <div class="center">
@@ -793,8 +585,7 @@
                     </div>
 
                     <div class="file">
-                        <p id="uploadedfiles">
-                        </p>
+                        
                         <div id="window">
                             <nav class="navbar navbar-expand-lg navbar-light">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -855,13 +646,10 @@
                                 <div id="editDeleteModal"></div>
                                 <div id="dvPrintComment" class="containerPrintComment"></div>
                             </div>
-                            <p id="uploadedfiles">
-                            </p>
-                            <div class="responsive-message"></div>
                         </div>
+                        <span id="uploadedfiles"></span>
                         <span id="snapshot-1"></span>
                         <div class="responsive-message"></div>
-
                         <div class="files">
                             <div class="galleryselector" id="uploading">
                                 <img src="https://img.icons8.com/external-prettycons-lineal-prettycons/90/000000/external-gallery-multimedia-prettycons-lineal-prettycons.png" />
@@ -1252,7 +1040,8 @@
     <div class="boxRecord">
         <div class="innerboxs" id="procedurehead">
             <p>Complete Procedures:</p>
-            <img id="imghead" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+            <img id="imghead"
+                src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
         </div>
         <table id="tabletocomplete">
             <tr>
@@ -1262,21 +1051,19 @@
                 <th>Total()</th>
             </tr>
             <tr>
-                <td>
+                <td><!--col0-->
                     <div class="bodypack">
                         <p>Body Pack</p>
                         <button class="bodypack buttoncolor2">Invoiced</button>
                     </div>
                 </td>
-                <td>
-                    30.00
+                <td><!--col1-->
+                    <p>30.00</p>
                 </td>
-                <td>
-                    3.00(10%)
+                <td style="display: flex; margin-left: 5rem;"><!--col2-->
+                    <p>3.00</p><p>(10%)</p>
                 </td>
-                <td>
-                    27.00
-                </td>
+                <td>27.00</td>
             </tr>
             <tr>
                 <td>
@@ -1286,31 +1073,27 @@
                     </div>
                 </td>
                 <td>
-                    50.00
+                    <p>50.00</p>
                 </td>
-                <td>
-                    20.00(20%)
+                <td style="display:flex; margin-left: 5rem;">
+                    <p>20.00</p><p>(20%)</p>
                 </td>
-                <td>
-                    30.00
-                </td>
+                <td>30.00</td>
             </tr>
             <tr>
-                <td>
+                <td><!--col 1-->
                     <div class="bodypack">
                         <p>Fruit facial</p>
                         <button class="bodypack buttoncolor2">Invoiced</button>
                     </div>
                 </td>
-                <td>
-                    70.00
+                <td><!--col 2-->
+                    <p>70.00</p>
                 </td>
-                <td>
-                    35.00(50%)
+                <td style="display: flex;margin-left: 5rem;"><!--col3-->
+                    <p>35.00</p><p>(50%)</p>
                 </td>
-                <td>
-                    35.00
-                </td>
+                <td>35.00</td>
             </tr>
             <tr>
                 <td>
@@ -1320,14 +1103,12 @@
                     </div>
                 </td>
                 <td>
-                    50.00
+                    <p>50.00</p>
                 </td>
-                <td>
-                    2.50(5%)
+                <td style="display: flex;margin-left: 5rem;">
+                    <p>2.50</p><p>(5%)</p>
                 </td>
-                <td>
-                    47.00
-                </td>
+                <td>47.00</td>
             </tr>
             <tr>
                 <td>
@@ -1337,67 +1118,61 @@
                     </div>
                 </td>
                 <td>
-                    50.00
+                    <p>50.00</p>
                 </td>
-                <td>
-                    2.50(5%)
+                <td style="display: flex;margin-left: 5rem;">
+                    <p>2.50</p><p>(5%)</p>
                 </td>
-                <td>
-                    47.00
-                </td>
+                <td>47.00</td>
             </tr>
             <tr>
-                <td>
+                <td><!--col 1-->
                     <div class="bodypack">
                         <p>Fruit facial</p>
                         <button class="bodypack buttoncolor2">Invoiced</button>
                     </div>
                 </td>
-                <td>
-                    70.00
+                <td><!--col 2-->
+                    <p>70.00</p>
                 </td>
-                <td>
-                    2.50(5%)
-                </td>
-                <td>
-                    66.50
-                </td>
+                <td style="display: flex;margin-left: 5rem;"><!-- col 3-->
+                    <p>2.50</p><p>(5%)</p>
+                </td><!-- col 4-->
+                <td>66.50</td>
             </tr>
             <tr>
-                <td>
+                <td><!--col 0 -->
                     <div class="bodypack">
-                        <div>
+                        <div id="div10">
                             <p>Root touch up</p>
-                            <p id="addnotelevel10" onclick="">Add note</p>
+                            <p id="addnotelevel10">Add note</p>
                         </div>
                     </div>
                 </td>
-                <td>
+                <td><!--col 1 -->
                     <div class="unitcost">
                         <input type="text" value="2">
                         <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
                         <input type="text" value="500">
                     </div>
                 </td>
-                <td>
+                <td style="display: flex;margin-left: 5rem;"><!--col 2 -->
                     <div class="discount">
                         <input type="text" value="10">
                         <select name="" id="">
-                                        <option value="%">%</option>
-                                        <option value="Rs">Rs</option>
-                                    </select>
+                            <option value="%">%</option>
+                            <option value="Rs">Rs</option>
+                        </select>
                     </div>
                 </td>
-                <td>
-                    <div class="tatala">
-                        <p>900.00</p>
-                        <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
-                    </div>
+                <td>900.00</td>
+                <td id="cancleout1"><!--col 4 -->
+                    <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="rootthakra">
+                    <div class="rootthakra" id="div11">
                         <h6>Thakradhara</h6>
                         <p id="addnotelevel11">Add note</p>
                     </div>
@@ -1409,20 +1184,18 @@
                         <input type="text" value="500">
                     </div>
                 </td>
-                <td>
+                <td style="display: flex;margin-left: 5rem;">
                     <div class="discount">
                         <input type="text" value="10">
                         <select name="" id="">
-                                        <option value="%">%</option>
-                                        <option value="Rs">Rs</option>
-                                    </select>
+                            <option value="%">%</option>
+                            <option value="Rs">Rs</option>
+                        </select>
                     </div>
                 </td>
-                <td>
-                    <div class="tatala">
-                        <p>1550.00</p>
-                        <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
-                    </div>
+                <td>1550.00</td>
+                <td id="cancleout1"><!--col 4 -->
+                    <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
                 </td>
             </tr>
             <tr class="totalval">
@@ -1447,12 +1220,12 @@
                 </td>
             </tr>
         </table>
-        <div class="innnercdbutton">
+        <div class="innnercdbutton">                
             <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
             <button class="savebtn" onclick="doneprocedure()" name="savebtn" value="OK" type="button">Done</button>
         </div>
     </div>
-    </div>
+</div>
     <script type="text/javascript" src="script.js"></script>
 
 </html>
