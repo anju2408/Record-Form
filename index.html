@@ -24,6 +24,7 @@
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
 </head>
+
 <body>
     <div class="containerBox">
         <div class="center">
@@ -459,8 +460,7 @@
                     <button>Add Drug</button>
                     <div class="checkbox">
                         <input type="checkbox" name="" id="check">
-                        <label for="check">or Any Cheaper Generic medicine are as per choice of patient with their own.
-                            risk</label>
+                        <label for="check">or Any Cheaper Generic medicine are as per choice of patient with their own risk.</label>
                     </div>
                     <div class="generalintraction" id="generalintraction">
                         <p>General Instruction</p>
@@ -567,8 +567,7 @@
                     <input type="button" class="btn btn-lg btn-block addrow" id="addrow" value="Add Drug" />
                     <div class="checkbox">
                         <input type="checkbox" name="" id="check">
-                        <label for="check">or Any Cheaper Generic medicine are as per choice of patient with their own.
-                            risk</label>
+                        <label for="check">or Any Cheaper Generic medicine are as per choice of patient with their own risk.</label>
                     </div>
                     <div class="innnercdbutton">
                         <button class="canclebtn" onclick='cancleprescription()' name="canclebtn" value="OK" type="button">Cancle</button>
@@ -583,9 +582,7 @@
                         <p>Files</p>
                         <img id='filesetting' src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
                     </div>
-
                     <div class="file">
-                        
                         <div id="window">
                             <nav class="navbar navbar-expand-lg navbar-light">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -615,16 +612,11 @@
                                         </button>
                                     </li>
                                     <li class="nav-item">
-                                        <button name="download" class="nav-link btnDownload">Dowanload</button>
+                                        <button name="download" class="nav-link btnDownload">Download</button>
                                     </li>
                                     <li class="nav-item">
                                         <button name="share" class="nav-link btnShare">
                                             <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                        </button>
-                                    </li>
-                                    <li class="nav-item">
-                                        <button name="delete" class="nav-link btnDelete">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
                                         </button>
                                     </li>
                                 </ul>
@@ -647,145 +639,142 @@
                                 <div id="dvPrintComment" class="containerPrintComment"></div>
                             </div>
                         </div>
-                        <span id="uploadedfiles"></span>
-                        <span id="snapshot-1"></span>
+                        <span class="d-flex flex-wrap justify-content-start" id="uploadedfiles"></span>
+                        <span class="d-flex flex-wrap justify-content-start" id="snapshot-1"></span>
                         <div class="responsive-message"></div>
                         <div class="files">
                             <div class="galleryselector" id="uploading">
                                 <img src="https://img.icons8.com/external-prettycons-lineal-prettycons/90/000000/external-gallery-multimedia-prettycons-lineal-prettycons.png" />
-                                <p><input type="file" id="file" accept="image/*" onchange="loadFile(event)" style="display:none;" multiple></input>
+                                <p><input type="file" id="image" accept="image/*" style="display: none;" onchange="image_select()" multiple=""></input>
                                 </p>
-                                <p><label for="file">upload a File<label></p>
+                                <p><label for="file" onclick="document.getElementById('image').click()">Upload a
+                                        File</label></p>
                             </div>
                         </div>
                         <div class="files">
                             <div class="cameraselector" id="btn-start">
-                                <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop">
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     <img src="https://img.icons8.com/ios-glyphs/90/000000/camera--v1.png" />
                                     <div>
                                         Take picture
                                     </div>
                                 </button>
                             </div>
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h6 class="modal-title" id="staticBackdropLabel">Capture images using a
-                                                webcam</h6>
-                                            <button type="button" class="btn-close" id="btn-close"
-                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="files">
+                            <div class="commentselector">
+                                <button type="button" class="btn" id="btnImagePopup">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png" width="90px" />
+                                    <div>Give comment</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="staticBackdropLabel">Capture images using a webcam
+                                        </h6>
+                                        <button type="button" class="btn-close" id="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="play-area-sub1" id="play-area-sub1">
+                                            <video id="stream" style="width: 466px; height: 246px;"></video>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="play-area-sub1" id="play-area-sub1">
-                                                <video id="stream" style="width: 466px; height: 246px;"></video>
-                                            </div>
-                                            <div class="play-area-sub" id="play-area-sub">
-                                                <canvas id="capture" width="320" height="240"></canvas>
+                                        <div class="play-area-sub" id="play-area-sub">
+                                            <canvas id="capture" width="320" height="240"></canvas>
 
-                                            </div>
-                                            <div id="snapshot"></div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdrop1">
-                                                Capture Photo
-                                            </button>
+                                        <div id="snapshot"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                                            Capture Photo
+                                        </button>
 
-                                            <button type="button" class="btn btn-secondary" id="btn-cancel"
-                                                data-bs-dismiss="modal">Cancel</button>
-                                        </div>
+                                        <button type="button" class="btn btn-secondary" id="btn-cancel" data-bs-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop1Label"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h6 class="modal-title" id="staticBackdrop1Label1">Capture
-                                                images using a
-                                                webcam
-                                            </h6>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close" id="btn-close-1"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="play-area-sub1-1" id="play-area-sub1-1">
-                                                <video id="stream-1" style="width: 466px; height: 246px;"></video>
-                                            </div>
-                                            <div class="play-area-sub-1" id="play-area-sub-1">
-                                                <canvas id="capture" width="320" height="240"></canvas>
-                                            </div>
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label class="col-form-label">File
-                                                        Name</label>
-                                    <input type="text" class="form-control" id="fileName" placeholder="Write">
-                            </div>
-                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-warning" id="btn-capture">Save
-                                                Photo</button>
-                            <button type="button" class="btn btn-secondary" id="retake">Retake</button>
+                        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop1Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="staticBackdrop1Label1">Capture images using a webcam
+                                        </h6>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close-1"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="play-area-sub1-1" id="play-area-sub1-1">
+                                            <video id="stream-1" style="width: 466px; height: 246px;"></video>
+                                        </div>
+                                        <div class="play-area-sub-1" id="play-area-sub-1">
+                                            <canvas id="capture" width="320" height="240"></canvas>
+                                        </div>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="col-form-label">File
+                                                    Name</label>
+                                                <input type="text" class="form-control" id="fileName" placeholder="Write">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" id="btn-capture">Save
+                                            Photo</button>
+                                        <button type="button" class="btn btn-secondary" id="retake">Retake</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    </div>
 
-    <!-- level-5 -->
-    <div class="boxRecord">
-        <div class="innerboxs" id="advicehead">
-            <p>Advice</p>
-            <img id="advicesetting" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
-        </div>
-        <div id="advicediv" style="margin-left: 70px; ">
-            <input id='adviceinp' name="" value="" type="text" placeholder="Write Advice" class="writeadviceinput">
-        </div>
-        <div class="innnercdbutton">
-            <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
-            <button class="savebtn" onclick="setadvise()" name="savebtn" value="OK" type="button">Done</button>
-        </div>
-    </div>
+                <!-- level-5 -->
+                <div class="boxRecord">
+                    <div class="innerboxs" id="advicehead">
+                        <p>Advice</p>
+                        <img id="advicesetting" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+                    </div>
+                    <div id="advicediv" style="margin-left: 70px; ">
+                        <input id='adviceinp' name="" value="" type="text" placeholder="Write Advice" class="writeadviceinput">
+                    </div>
+                    <div class="innnercdbutton">
+                        <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
+                        <button class="savebtn" onclick="setadvise()" name="savebtn" value="OK" type="button">Done</button>
+                    </div>
+                </div>
 
-    <!-- level-6 -->
-    <div class="boxRecord">
-        <div class="innerboxs" id="sihead">
-            <p>Special Instruction</p>
-            <img id="sisetting" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
-        </div>
-        <div class="sinstruction" id="sitextareadiv">
-            <textarea name="" id="sitextarea" rows="3" cols="130"></textarea>
-        </div>
-        <div id="sip" style="margin-left: 50px;">
+                <!-- level-6 -->
+                <div class="boxRecord">
+                    <div class="innerboxs" id="sihead">
+                        <p>Special Instruction</p>
+                        <img id="sisetting" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+                    </div>
+                    <div class="sinstruction" id="sitextareadiv">
+                        <textarea name="" id="sitextarea" rows="3" cols="130"></textarea>
+                    </div>
+                    <div id="sip" style="margin-left: 50px;">
+                    </div>
+                    <div class="sinstructionp" id="sinstructionp">
+                        <p>Press Enter for next line</p>
+                    </div>
+                    <div class="innnercdbutton">
+                        <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
+                        <button class="savebtn" onclick='setsi()' name="savebtn" value="OK" type="button">Done</button>
+                    </div>
+                </div>
 
-        </div>
-        <div class="sinstructionp" id="sinstructionp">
-            <p>Press Enter for next line</p>
-        </div>
-        <div class="innnercdbutton">
-            <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
-            <button class="savebtn" onclick='setsi()' name="savebtn" value="OK" type="button">Done</button>
-        </div>
-    </div>
-
-    <!-- level-7 -->
-    <div class="boxRecord">
-        <div class="innerboxs" id="stamphead">
-            <img id="stampimg" style="display: none;" src="https://img.icons8.com/external-outline-agus-raharjo/64/000000/external-stamp-justice-outline-agus-raharjo-2.png" />
-            <p>Instruction Stamp</p>
-            <img id="stampsetting" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
-        </div>
-        <div class="stampin">
-            <select name="" id="selectstamp" class="selectintrac">
+                <!-- level-7 -->
+                <div class="boxRecord">
+                    <div class="innerboxs" id="stamphead">
+                        <img id="stampimg" style="display: none;" src="https://img.icons8.com/external-outline-agus-raharjo/64/000000/external-stamp-justice-outline-agus-raharjo-2.png" />
+                        <p>Instruction Stamp</p>
+                        <img id="stampsetting" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+                    </div>
+                    <div class="stampin">
+                        <select name="" id="selectstamp" class="selectintrac">
                             <option value="">Select Ready Instraction Stamp</option>
                             <option
                                 value="Need for Immunosuppression/DMARD therapy [M T X + Cqn + Steroid] with its all possible adverse effects explained in Detail">
@@ -802,430 +791,450 @@
                                 allergic reaction.
                             </option>
                         </select>
-            <div class="instractionstamps">
-                <div class="instractionstamp1" id="stamp1" style="display: none;"></div>
-                <div class="instractionstamp1" id="stamp2" style="display: none;"></div>
-            </div>
-            <div class="instractionstamp " id="readystamp1">
-                <p>Need for Immunosuppression/DMARD therapy <input type="text" id="stampinp"></input> with its all possible adverse effects explained in Detail</p>
-            </div>
-            <div class="instractionstamp" id="readystamp2">
-                <p>Nature of the disease, Prognosis and Need for Long Term Treatment is explained with its adverse effect and allergic reaction.</p>
-            </div>
-        </div>
-        <div class="innnercdbutton">
-            <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
-            <button class="savebtn" onclick="setinsstamp()" name="savebtn" value="OK" type="button">Done</button>
-        </div>
-    </div>
-
-    <!-- level-8 -->
-    <div class="boxRecord">
-        <div class="innerboxs" id="testheading">
-            <p>Lab Test Advice</p>
-            <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
-        </div>
-        <div class="testadvice" id="testadvice">
-            <div class="leftTest">
-                <div class="instractioniputtest" id="lefttestinp">
-                    <p><b>Lab Test</b>:(Current)</p>
-                    <input type="text" placeholder="Search Lab Test" id="searchlabtest">
-                    <p class="testcolor" id="addtestins">Add Instruction</p>
-                </div>
-                <div class="esr" id="leftdiv">
-                    <div>
-                        <div class="bgcolorStamp" id="ESR1">
-                            <h6 onclick="setlabtest(event)">ESR</h6>
-                            <img onclick="deletetest(event)" id="ESR1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                        <div class="instractionstamps">
+                            <div class="instractionstamp1" id="stamp1" style="display: none;"></div>
+                            <div class="instractionstamp1" id="stamp2" style="display: none;"></div>
+                        </div>
+                        <div class="instractionstamp " id="readystamp1">
+                            <p>Need for Immunosuppression/DMARD therapy <input type="text" id="stampinp"></input> with its all possible adverse effects explained in Detail</p>
+                        </div>
+                        <div class="instractionstamp" id="readystamp2">
+                            <p>Nature of the disease, Prognosis and Need for Long Term Treatment is explained with its adverse effect and allergic reaction.</p>
                         </div>
                     </div>
-                    <div class="bgcolorStamp" id="CBC1">
-                        <h6 onclick="setlabtest(event)">CBC</h6>
-                        <img onclick="deletetest(event)" id="CBC1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
-                    </div>
-                    <div class="bgcolorStampl" id="Sedimentation Rate1">
-                        <h6 onclick="setlabtest(event)">Sedimentation Rate</h6>
-                        <img onclick="deletetest(event)" id="Sedimentation Rate1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
-                    </div>
-                    <div class="bgcolorStamp" id="SGPT1">
-                        <h6 onclick="setlabtest(event)">SGPT</h6>
-                        <img onclick="deletetest(event)" id="SGPT1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                    <div class="innnercdbutton">
+                        <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
+                        <button class="savebtn" onclick="setinsstamp()" name="savebtn" value="OK" type="button">Done</button>
                     </div>
                 </div>
-            </div>
-            <div class="rightTest">
-                <div class="nestvisit" id="righttestinp">
-                    <b>Test for Next visit :</b>
-                    <input type="text" placeholder="Search Lab Test" id="testinp1">
-                    <input type="text" placeholder="Add Test Instraction" id="testinp2">
-                    <button type="button" onclick="addins2()">Add</button>
-                </div>
-                <div class="esr2 esr" id="rightdiv">
-                    <div class="bgcolorStamp" style="width: 19%;" id="ESR2">
-                        <h6 onclick="setlabtest2(event)">ESR</h6>
-                        <img onclick="deletetest(event)" id="ESR2" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
-                    </div>
-                    <div class="bgcolorStamp" style="width: 20%;" id="CBC2">
-                        <h6 onclick="setlabtest2(event)">CBC</h6>
-                        <img onclick="deletetest(event)" id="CBC2" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
-                    </div>
-                    <div class="bgcolorStamp" style="width: 22%;" id="SGPT2">
-                        <h6 onclick="setlabtest2(event)">SGPT</h6>
-                        <img onclick="deletetest(event)" id='SGPT2' src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
-                    </div>
-                    <div class="bgcolorStampl" id="Sedimentation Rate2">
-                        <h6 onclick="setlabtest2(event)">Sedimentation Rate</h6>
-                        <img onclick="deletetest(event)" id="Sedimentation Rate2" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="innnercdbutton">
-            <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
-            <button class="savebtn" onclick="donelabtest()" name="savebtn" value="OK" type="button">Done</button>
-        </div>
-    </div>
 
-    <!-- level-9 -->
-    <div class="boxRecord">
-        <div class="innerboxs" id="reveiwheading">
-            <p>Review After:</p>
-            <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
-        </div>
-        <div class="reviewAfter">
-            <div class="dayr" id="dayr">
-                <p>By Days</p>
-                <p id="pday"></p>
-                <input type="number" id="byday">
-            </div>
-            <div class="dater" id="dater">
-                <p>By Date</p>
-                <p id="pdate"></p>
-                <input type="date" name="" id="bydate">
-            </div>
-        </div>
-        <div class="innnercdbutton">
-            <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
-            <button class="savebtn" onclick="reveiw()" name="savebtn" value="OK" type="button">Done</button>
-        </div>
-    </div>
+                <!-- level-8 -->
+                <div class="boxRecord">
+                    <div class="innerboxs" id="testheading">
+                        <p>Lab Test Advice</p>
+                        <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+                    </div>
+                    <div class="testadvice" id="testadvice">
+                        <div class="leftTest">
+                            <div class="instractioniputtest" id="lefttestinp">
+                                <p><b>Lab Test</b>:(Current)</p>
+                                <input type="text" placeholder="Search Lab Test" id="searchlabtest">
+                                <p class="testcolor" id="addtestins">Add Instruction</p>
+                            </div>
+                            <div class="esr" id="leftdiv">
+                                <div>
+                                    <div class="bgcolorStamp" id="ESR1">
+                                        <h6 onclick="setlabtest(event)">ESR</h6>
+                                        <img onclick="deletetest(event)" id="ESR1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                    </div>
+                                </div>
+                                <div class="bgcolorStamp" id="CBC1">
+                                    <h6 onclick="setlabtest(event)">CBC</h6>
+                                    <img onclick="deletetest(event)" id="CBC1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                </div>
+                                <div class="bgcolorStampl" id="Sedimentation Rate1">
+                                    <h6 onclick="setlabtest(event)">Sedimentation Rate</h6>
+                                    <img onclick="deletetest(event)" id="Sedimentation Rate1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                </div>
+                                <div class="bgcolorStamp" id="SGPT1">
+                                    <h6 onclick="setlabtest(event)">SGPT</h6>
+                                    <img onclick="deletetest(event)" id="SGPT1" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rightTest">
+                            <div class="nestvisit" id="righttestinp">
+                                <b>Test for Next visit :</b>
+                                <input type="text" placeholder="Search Lab Test" id="testinp1">
+                                <input type="text" placeholder="Add Test Instraction" id="testinp2">
+                                <button type="button" onclick="addins2()">Add</button>
+                            </div>
+                            <div class="esr2 esr" id="rightdiv">
+                                <div class="bgcolorStamp" style="width: 19%;" id="ESR2">
+                                    <h6 onclick="setlabtest2(event)">ESR</h6>
+                                    <img onclick="deletetest(event)" id="ESR2" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                </div>
+                                <div class="bgcolorStamp" style="width: 20%;" id="CBC2">
+                                    <h6 onclick="setlabtest2(event)">CBC</h6>
+                                    <img onclick="deletetest(event)" id="CBC2" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                </div>
+                                <div class="bgcolorStamp" style="width: 22%;" id="SGPT2">
+                                    <h6 onclick="setlabtest2(event)">SGPT</h6>
+                                    <img onclick="deletetest(event)" id='SGPT2' src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                </div>
+                                <div class="bgcolorStampl" id="Sedimentation Rate2">
+                                    <h6 onclick="setlabtest2(event)">Sedimentation Rate</h6>
+                                    <img onclick="deletetest(event)" id="Sedimentation Rate2" src="https://img.icons8.com/material-outlined/24/000000/cancel--v1.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="innnercdbutton">
+                        <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
+                        <button class="savebtn" onclick="donelabtest()" name="savebtn" value="OK" type="button">Done</button>
+                    </div>
+                </div>
 
-    <!-- level-10 -->
-    <div class="boxRecord">
-        <div class="innerboxs" id="treatmentheading">
-            <p>Treatment Plan:</p>
-            <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
-        </div>
-        <table id="treatmenttable">
-            <tr>
-                <th>
-                    <p class="proceheding">
-                        Proceducer
-                    </p>
-                </th>
-                <th>
-                    <div class="unithead">
-                        <p>Unit</p>
-                        <p>Cost()</p>
+                <!-- level-9 -->
+                <div class="boxRecord">
+                    <div class="innerboxs" id="reveiwheading">
+                        <p>Review After:</p>
+                        <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
                     </div>
-                </th>
-                <th>Discount</th>
-                <th>Total()</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="roott" id="roott">
-                        <h6>Root touch up</h6>
-                        <p class="addn" id="addn">Add notes</p>
+                    <div class="reviewAfter">
+                        <div class="dayr" id="dayr">
+                            <p>By Days</p>
+                            <p id="pday"></p>
+                            <input type="number" id="byday">
+                        </div>
+                        <div class="dater" id="dater">
+                            <p>By Date</p>
+                            <p id="pdate"></p>
+                            <input type="date" name="" id="bydate">
+                        </div>
                     </div>
-                </td>
-                <td>
-                    <div class="unitcost">
-                        <input type="text">
-                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
-                        <input type="text">
+                    <div class="innnercdbutton">
+                        <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
+                        <button class="savebtn" onclick="reveiw()" name="savebtn" value="OK" type="button">Done</button>
                     </div>
-                </td>
-                <td>
-                    <div class="discount">
-                        <input type="text">
-                        <select name="" id="" onchange="total()">
+                </div>
+
+                <!-- level-10 -->
+                <div class="boxRecord">
+                    <div class="innerboxs" id="treatmentheading">
+                        <p>Treatment Plan:</p>
+                        <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+                    </div>
+                    <table id="treatmenttable">
+                        <tr>
+                            <th>
+                                <p class="proceheding">
+                                    Proceducer
+                                </p>
+                            </th>
+                            <th>
+                                <div class="unithead">
+                                    <p>Unit</p>
+                                    <p>Cost()</p>
+                                </div>
+                            </th>
+                            <th>Discount</th>
+                            <th>Total()</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="roott" id="roott">
+                                    <h6>Root touch up</h6>
+                                    <p class="addn" id="addn">Add notes</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="unitcost">
+                                    <input type="text">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="discount">
+                                    <input type="text">
+                                    <select name="" id="" onchange="total()">
                                         <option value="%">%</option>
                                         <option value="Rs.">Rs</option>
                                     </select>
-                    </div>
-                </td>
-                <td>
-                    <div class="tatala">
-                        <p></p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tatala">
+                                    <p></p>
 
-                    </div>
-                </td>
-                <td><img id='cancleout' src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" /></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="roott" id="roott2">
-                        <h6>Thakradhara</h6>
-                        <p class="addn" id="addn2">Add notes</p>
-                    </div>
-                </td>
-                <td>
-                    <div class="unitcost">
-                        <input type="text">
-                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
-                        <input type="text">
-                    </div>
-                </td>
-                <td>
-                    <div class="discount">
-                        <input type="text">
-                        <select name="" id="" onchange="total()">
+                                </div>
+                            </td>
+                            <td><img id='cancleout' src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="roott" id="roott2">
+                                    <h6>Thakradhara</h6>
+                                    <p class="addn" id="addn2">Add notes</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="unitcost">
+                                    <input type="text">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="discount">
+                                    <input type="text">
+                                    <select name="" id="" onchange="total()">
                                         <option value="%">%</option>
                                         <option value="Rs">Rs</option>
                                     </select>
-                    </div>
-                </td>
-                <td>
-                    <div class="tatala">
-                        <p></p>
-                    </div>
-                </td>
-                <td><img id='cancleout' src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" /></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="roott" id="roott3">
-                        <h6>Thakradhara</h6>
-                        <p class="addn" id="addn3">Add notes</p>
-                    </div>
-                </td>
-                <td>
-                    <div class="unitcost">
-                        <input type="text">
-                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
-                        <input type="text">
-                    </div>
-                </td>
-                <td>
-                    <div class="discount">
-                        <input type="text">
-                        <select name="" id="" onchange="total()">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tatala">
+                                    <p></p>
+                                </div>
+                            </td>
+                            <td><img id='cancleout' src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="roott" id="roott3">
+                                    <h6>Thakradhara</h6>
+                                    <p class="addn" id="addn3">Add notes</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="unitcost">
+                                    <input type="text">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="discount">
+                                    <input type="text">
+                                    <select name="" id="" onchange="total()">
                                         <option value="%">%</option>
                                         <option value="Rs">Rs</option>
                                     </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tatala">
+                                    <p></p>
+                                </div>
+                            </td>
+                            <td><img id='cancleout' src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="estimatedTotal">EstimatedTotal</td>
+                            <td class="estimatedTotal">00.00</td>
+                        </tr>
+                    </table>
+                    <div class="innnercdbutton">
+                        <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
+                        <button class="savebtn" onclick="donetreatment()" name="savebtn" value="OK" type="button">Done</button>
                     </div>
-                </td>
-                <td>
-                    <div class="tatala">
-                        <p></p>
-                    </div>
-                </td>
-                <td><img id='cancleout' src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td class="estimatedTotal">EstimatedTotal</td>
-                <td class="estimatedTotal">00.00</td>
-            </tr>
-        </table>
-        <div class="innnercdbutton">
-            <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
-            <button class="savebtn" onclick="donetreatment()" name="savebtn" value="OK" type="button">Done</button>
-        </div>
-    </div>
+                </div>
 
-    <!-- level 11 -->
-    <div class="boxRecord">
-        <div class="innerboxs" id="procedurehead">
-            <p>Complete Procedures:</p>
-            <img id="imghead"
-                src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
-        </div>
-        <table id="tabletocomplete">
-            <tr>
-                <th>Proceducer</th>
-                <th>Cost</th>
-                <th>Discount</th>
-                <th>Total()</th>
-            </tr>
-            <tr>
-                <td><!--col0-->
-                    <div class="bodypack">
-                        <p>Body Pack</p>
-                        <button class="bodypack buttoncolor2">Invoiced</button>
+                <!-- level 11 -->
+                <div class="boxRecord">
+                    <div class="innerboxs" id="procedurehead">
+                        <p>Complete Procedures:</p>
+                        <img id="imghead" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-setting-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
                     </div>
-                </td>
-                <td><!--col1-->
-                    <p>30.00</p>
-                </td>
-                <td style="display: flex; margin-left: 5rem;"><!--col2-->
-                    <p>3.00</p><p>(10%)</p>
-                </td>
-                <td>27.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="bodypack">
-                        <p>Panchakarma</p>
-                        <button class="bodypack buttoncolor2">Invoiced</button>
+                    <table id="tabletocomplete">
+                        <tr>
+                            <th>Proceducer</th>
+                            <th>Cost</th>
+                            <th>Discount</th>
+                            <th>Total()</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--col0-->
+                                <div class="bodypack">
+                                    <p>Body Pack</p>
+                                    <button class="bodypack buttoncolor2">Invoiced</button>
+                                </div>
+                            </td>
+                            <td>
+                                <!--col1-->
+                                <p>30.00</p>
+                            </td>
+                            <td style="display: flex; margin-left: 5rem;">
+                                <!--col2-->
+                                <p>3.00</p>
+                                <p>(10%)</p>
+                            </td>
+                            <td>27.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="bodypack">
+                                    <p>Panchakarma</p>
+                                    <button class="bodypack buttoncolor2">Invoiced</button>
+                                </div>
+                            </td>
+                            <td>
+                                <p>50.00</p>
+                            </td>
+                            <td style="display:flex; margin-left: 5rem;">
+                                <p>20.00</p>
+                                <p>(20%)</p>
+                            </td>
+                            <td>30.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--col 1-->
+                                <div class="bodypack">
+                                    <p>Fruit facial</p>
+                                    <button class="bodypack buttoncolor2">Invoiced</button>
+                                </div>
+                            </td>
+                            <td>
+                                <!--col 2-->
+                                <p>70.00</p>
+                            </td>
+                            <td style="display: flex;margin-left: 5rem;">
+                                <!--col3-->
+                                <p>35.00</p>
+                                <p>(50%)</p>
+                            </td>
+                            <td>35.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="bodypack">
+                                    <p>Body Pack</p>
+                                    <button class="bodypack buttoncolor2">Invoiced</button>
+                                </div>
+                            </td>
+                            <td>
+                                <p>50.00</p>
+                            </td>
+                            <td style="display: flex;margin-left: 5rem;">
+                                <p>2.50</p>
+                                <p>(5%)</p>
+                            </td>
+                            <td>47.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="bodypack">
+                                    <p>Panchakarma</p>
+                                    <button class="bodypack buttoncolor2">Invoiced</button>
+                                </div>
+                            </td>
+                            <td>
+                                <p>50.00</p>
+                            </td>
+                            <td style="display: flex;margin-left: 5rem;">
+                                <p>2.50</p>
+                                <p>(5%)</p>
+                            </td>
+                            <td>47.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--col 1-->
+                                <div class="bodypack">
+                                    <p>Fruit facial</p>
+                                    <button class="bodypack buttoncolor2">Invoiced</button>
+                                </div>
+                            </td>
+                            <td>
+                                <!--col 2-->
+                                <p>70.00</p>
+                            </td>
+                            <td style="display: flex;margin-left: 5rem;">
+                                <!-- col 3-->
+                                <p>2.50</p>
+                                <p>(5%)</p>
+                            </td>
+                            <!-- col 4-->
+                            <td>66.50</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--col 0 -->
+                                <div class="bodypack">
+                                    <div id="div10">
+                                        <p>Root touch up</p>
+                                        <p id="addnotelevel10">Add note</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--col 1 -->
+                                <div class="unitcost">
+                                    <input type="text" value="2">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+                                    <input type="text" value="500">
+                                </div>
+                            </td>
+                            <td style="display: flex;margin-left: 5rem;">
+                                <!--col 2 -->
+                                <div class="discount">
+                                    <input type="text" value="10">
+                                    <select name="" id="">
+                                        <option value="%">%</option>
+                                        <option value="Rs">Rs</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>900.00</td>
+                            <td id="cancleout1">
+                                <!--col 4 -->
+                                <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="rootthakra" id="div11">
+                                    <h6>Thakradhara</h6>
+                                    <p id="addnotelevel11">Add note</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="unitcost">
+                                    <input type="text" value="2">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+                                    <input type="text" value="500">
+                                </div>
+                            </td>
+                            <td style="display: flex;margin-left: 5rem;">
+                                <div class="discount">
+                                    <input type="text" value="10">
+                                    <select name="" id="">
+                                        <option value="%">%</option>
+                                        <option value="Rs">Rs</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>1550.00</td>
+                            <td id="cancleout1">
+                                <!--col 4 -->
+                                <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
+                            </td>
+                        </tr>
+                        <tr class="totalval">
+                            <td></td>
+                            <td>
+                                <div>
+                                    <p>Total Cost()</p>
+                                    <p>320.00</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p>Total Discount()</p>
+                                    <p>66.50</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p>Grand Total()</p>
+                                    <p>253.50</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="innnercdbutton">
+                        <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
+                        <button class="savebtn" onclick="doneprocedure()" name="savebtn" value="OK" type="button">Done</button>
                     </div>
-                </td>
-                <td>
-                    <p>50.00</p>
-                </td>
-                <td style="display:flex; margin-left: 5rem;">
-                    <p>20.00</p><p>(20%)</p>
-                </td>
-                <td>30.00</td>
-            </tr>
-            <tr>
-                <td><!--col 1-->
-                    <div class="bodypack">
-                        <p>Fruit facial</p>
-                        <button class="bodypack buttoncolor2">Invoiced</button>
-                    </div>
-                </td>
-                <td><!--col 2-->
-                    <p>70.00</p>
-                </td>
-                <td style="display: flex;margin-left: 5rem;"><!--col3-->
-                    <p>35.00</p><p>(50%)</p>
-                </td>
-                <td>35.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="bodypack">
-                        <p>Body Pack</p>
-                        <button class="bodypack buttoncolor2">Invoiced</button>
-                    </div>
-                </td>
-                <td>
-                    <p>50.00</p>
-                </td>
-                <td style="display: flex;margin-left: 5rem;">
-                    <p>2.50</p><p>(5%)</p>
-                </td>
-                <td>47.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="bodypack">
-                        <p>Panchakarma</p>
-                        <button class="bodypack buttoncolor2">Invoiced</button>
-                    </div>
-                </td>
-                <td>
-                    <p>50.00</p>
-                </td>
-                <td style="display: flex;margin-left: 5rem;">
-                    <p>2.50</p><p>(5%)</p>
-                </td>
-                <td>47.00</td>
-            </tr>
-            <tr>
-                <td><!--col 1-->
-                    <div class="bodypack">
-                        <p>Fruit facial</p>
-                        <button class="bodypack buttoncolor2">Invoiced</button>
-                    </div>
-                </td>
-                <td><!--col 2-->
-                    <p>70.00</p>
-                </td>
-                <td style="display: flex;margin-left: 5rem;"><!-- col 3-->
-                    <p>2.50</p><p>(5%)</p>
-                </td><!-- col 4-->
-                <td>66.50</td>
-            </tr>
-            <tr>
-                <td><!--col 0 -->
-                    <div class="bodypack">
-                        <div id="div10">
-                            <p>Root touch up</p>
-                            <p id="addnotelevel10">Add note</p>
-                        </div>
-                    </div>
-                </td>
-                <td><!--col 1 -->
-                    <div class="unitcost">
-                        <input type="text" value="2">
-                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
-                        <input type="text" value="500">
-                    </div>
-                </td>
-                <td style="display: flex;margin-left: 5rem;"><!--col 2 -->
-                    <div class="discount">
-                        <input type="text" value="10">
-                        <select name="" id="">
-                            <option value="%">%</option>
-                            <option value="Rs">Rs</option>
-                        </select>
-                    </div>
-                </td>
-                <td>900.00</td>
-                <td id="cancleout1"><!--col 4 -->
-                    <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="rootthakra" id="div11">
-                        <h6>Thakradhara</h6>
-                        <p id="addnotelevel11">Add note</p>
-                    </div>
-                </td>
-                <td>
-                    <div class="unitcost">
-                        <input type="text" value="2">
-                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
-                        <input type="text" value="500">
-                    </div>
-                </td>
-                <td style="display: flex;margin-left: 5rem;">
-                    <div class="discount">
-                        <input type="text" value="10">
-                        <select name="" id="">
-                            <option value="%">%</option>
-                            <option value="Rs">Rs</option>
-                        </select>
-                    </div>
-                </td>
-                <td>1550.00</td>
-                <td id="cancleout1"><!--col 4 -->
-                    <img src="https://img.icons8.com/material-outlined/24/ff0000/cancel--v1.png" />
-                </td>
-            </tr>
-            <tr class="totalval">
-                <td></td>
-                <td>
-                    <div>
-                        <p>Total Cost()</p>
-                        <p>320.00</p>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <p>Total Discount()</p>
-                        <p>66.50</p>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <p>Grand Total()</p>
-                        <p>253.50</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div class="innnercdbutton">                
-            <button class="canclebtn" name="canclebtn" value="OK" type="button">Cancle</button>
-            <button class="savebtn" onclick="doneprocedure()" name="savebtn" value="OK" type="button">Done</button>
-        </div>
-    </div>
-</div>
-    <script type="text/javascript" src="script.js"></script>
+                </div>
+            </div>
+            <script type="text/javascript" src="script.js"></script>
 
 </html>
