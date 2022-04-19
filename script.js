@@ -1205,6 +1205,7 @@ function captureSnapshot() {
 
         $("#snapshot-1").append(temp);
         LoadImages(lastKnownCount);
+        console.log("Capture", lastKnownCount);
     }
 }
 
@@ -1214,9 +1215,11 @@ $(document).on("click", ".deleteImage", function(e) {
     if (index !== -1) {
         images.splice(index, 1);
         e.target.parentElement.remove();
+        // $("#imgContainer_" + index).remove();
     }
     const lastKnownCount = images.length;
     LoadImages(lastKnownCount);
+    console.log("Delete", lastKnownCount);
 });
 
 btnClose.addEventListener("click", stopStreaming);
@@ -1257,6 +1260,7 @@ function image_select() {
 
     document.getElementById('uploadedfiles').innerHTML = image_show();
     LoadImages(lastKnownCount);
+    console.log("Upload", lastKnownCount);
 }
 
 function image_show() {
@@ -1387,6 +1391,7 @@ function LoadImages(startPoint) {
     }
 
     for (let index = startPoint; index < images.length; index++) {
+        console.log(index);
         const element =
             '<div class="container image-container" data-role="page" id="imgContainer_' +
             index +
