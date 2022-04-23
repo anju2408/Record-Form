@@ -1182,6 +1182,8 @@ function startStreaming() {
 }
 btnCapture.addEventListener("click", captureSnapshot);
 
+var images = [];
+
 function captureSnapshot() {
     const lastKnownCount = images.length;
     document.getElementById("play-area-sub1-1").style.display = "none";
@@ -1205,7 +1207,6 @@ function captureSnapshot() {
 
         $("#snapshot-1").append(temp);
         LoadImages(lastKnownCount);
-        console.log("Capture", lastKnownCount);
     }
 }
 
@@ -1215,11 +1216,9 @@ $(document).on("click", ".deleteImage", function(e) {
     if (index !== -1) {
         images.splice(index, 1);
         e.target.parentElement.remove();
-        // $("#imgContainer_" + index).remove();
+        $(".image-container").remove();
     }
-    const lastKnownCount = images.length;
-    LoadImages(lastKnownCount);
-    console.log("Delete", lastKnownCount);
+    LoadImages(0);
 });
 
 btnClose.addEventListener("click", stopStreaming);
@@ -1260,7 +1259,6 @@ function image_select() {
 
     document.getElementById('uploadedfiles').innerHTML = image_show();
     LoadImages(lastKnownCount);
-    console.log("Upload", lastKnownCount);
 }
 
 function image_show() {
@@ -1277,11 +1275,17 @@ function image_show() {
 
 function delete_image(e) {
     uploadImages.splice(e, 1);
+    if (e !== -1) {
+        images.splice(e, 1)
+        $(".image-container").remove();
+    }
+    LoadImages(0);
     document.getElementById('uploadedfiles').innerHTML = image_show();
+
+
 }
 
 //<*********************************Image Popup functionalities**********************************************************************************>
-images = [];
 var CurrentBadge = null;
 var picture;
 
@@ -1391,7 +1395,6 @@ function LoadImages(startPoint) {
     }
 
     for (let index = startPoint; index < images.length; index++) {
-        console.log(index);
         const element =
             '<div class="container image-container" data-role="page" id="imgContainer_' +
             index +
