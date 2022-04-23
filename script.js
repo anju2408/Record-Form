@@ -1182,6 +1182,7 @@ function startStreaming() {
 }
 btnCapture.addEventListener("click", captureSnapshot);
 
+var images = [];
 function captureSnapshot() {
     const lastKnownCount = images.length;
     document.getElementById("play-area-sub1-1").style.display = "none";
@@ -1192,6 +1193,7 @@ function captureSnapshot() {
         var img = new Image();
         ctx.drawImage(stream, 0, 0, capture.width, capture.height);
         images.push(capture.toDataURL("image/png"));
+        console.log(images);
         img.src = capture.toDataURL("image/png");
         img.width = 200;
         img.height = 200;
@@ -1205,7 +1207,7 @@ function captureSnapshot() {
 
         $("#snapshot-1").append(temp);
         LoadImages(lastKnownCount);
-        console.log("Capture", lastKnownCount);
+        //console.log("Capture", lastKnownCount);
     }
 }
 
@@ -1214,12 +1216,16 @@ $(document).on("click", ".deleteImage", function(e) {
     const index = images.indexOf(src);
     if (index !== -1) {
         images.splice(index, 1);
+        //console.log("images length",images.length);
+        //console.log("images array",images);
         e.target.parentElement.remove();
-        // $("#imgContainer_" + index).remove();
+        //console.log($('#imgContainer_'+index));
+        $(".image-container").remove();
     }
+    //console.log("images length",images.length)
     const lastKnownCount = images.length;
-    LoadImages(lastKnownCount);
-    console.log("Delete", lastKnownCount);
+    LoadImages(0);
+    //console.log("Delete", lastKnownCount);
 });
 
 btnClose.addEventListener("click", stopStreaming);
@@ -1276,12 +1282,25 @@ function image_show() {
 }
 
 function delete_image(e) {
+    
+    console.log("delete_image called at",uploadImages)
+    console.log("spliced image at",e)
     uploadImages.splice(e, 1);
+    if (e !== -1) {
+        images.splice(e, 1);
+        //console.log("images length",images.length);
+        //console.log("images array",images);
+        //console.log($('#imgContainer_'+e));
+        $(".image-container").remove();
+    }
+    LoadImages(0);
+
     document.getElementById('uploadedfiles').innerHTML = image_show();
+
+    
 }
 
 //<*********************************Image Popup functionalities**********************************************************************************>
-images = [];
 var CurrentBadge = null;
 var picture;
 
@@ -1391,7 +1410,7 @@ function LoadImages(startPoint) {
     }
 
     for (let index = startPoint; index < images.length; index++) {
-        console.log(index);
+        console.log("index of uploaded loaded image",index);
         const element =
             '<div class="container image-container" data-role="page" id="imgContainer_' +
             index +
