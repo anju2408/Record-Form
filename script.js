@@ -1256,7 +1256,6 @@ function image_select() {
             alert("Please select all files at a time.");
         }
     }
-
     document.getElementById('uploadedfiles').innerHTML = image_show();
     LoadImages(lastKnownCount);
 }
@@ -1281,8 +1280,6 @@ function delete_image(e) {
     }
     LoadImages(0);
     document.getElementById('uploadedfiles').innerHTML = image_show();
-
-
 }
 
 //<*********************************Image Popup functionalities**********************************************************************************>
